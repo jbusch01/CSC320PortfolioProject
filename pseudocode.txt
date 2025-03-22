@@ -1,0 +1,16 @@
+Comment Title
+Comment Author
+Comment Date
+Start
+    Declare Class
+        Developer Note: Private variables
+        homeModel
+        homeStreetAddress
+        homeCity
+        homeState
+        homeZipCode
+
+        Developer Note: Constructor
+        Declare Home Constructor
+        
+
