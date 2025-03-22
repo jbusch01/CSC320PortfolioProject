@@ -1,42 +1,46 @@
-// Title: Home inventory class
-// Author: Jonathan Busch
-// Date: March 2025
+// Class for handling information about a single home (object)
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Home {
-    Scanner scnr = new Scanner(System.in);
-    private ArrayList<Home> homeList = new ArrayList<>();
-
-    private String homeModel;
-    private String homeStreetAddress;
-    private String homeCity;
-    private String homeState;
-    private int homeZipCode;
-
+    public static void home(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+    
+    String homeID;
+    String homeModel;
+    String homeStreetAddress;
+    String homeCity;
+    String homeState;
+    int homeZipCode;
+    
+    }
     // Constructor
-    public Home(String model, String address, String city, String state, int zip) {
-        // Initialize homeModel, homeAddress, homeZipCode
+    public Home() {
+        System.out.println("Please enter the following details:");
+        System.out.println("1. Home Model: ");
+        home.homeModel = scnr.next();
+        System.out.println("2. Street Address: ");
+        home.homeStreetAddress = scnr.next();
+        System.out.println("3. City: ");
+        home.homeCity = scnr.next();
+        System.out.println("4. State: ");
+        home.homeState = scnr.next();
+        System.out.println("5. Zip Code: ");
+        home.homeZipCode = scnr.nextInt();
+
+        return homeModel, homeStreetAddress, homeCity, homeState, homeZipCode
+
 
     }
-    public void addAddress(String newHome) {
-        // Add a non-existing address
-
+    public void displayHome(String homeID, String homeModel, String homeStreetAddress, String homeCity, String homeState, int homeZipCode) {
+        // Method to print home details
+        System.out.println("Please verify the information you entered. Confirm with Y for yes and N for no.");
+        System.out.println("Home Information:");
+        System.out.println("Home ID: " + homeID);
+        System.out.println("Model: " + homeModel);
+        System.out.println("Street Address: " + homeStreetAddress);
+        System.out.println("City: " + homeCity);
+        System.out.println("State: " + homeState);
+        System.out.println("Zip Code: " + homeZipCode);
     }
-
-    public void updateAddress(String newAddress) {
-        // Update an existing address
-    }
-
-    public void deleteAddress(String removeAddress) {
-        // Remove an existing address
-    }
-
-    public void listHomes(String listAddress) {
-        // Output list of homes in this class
-
-    }
-
-
 }
