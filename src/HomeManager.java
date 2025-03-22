@@ -14,7 +14,7 @@ public class HomeManager {
     public void listHome() {
         // Method for listing the homes
     }
-    public boolean deleteHome(String homeID) {
+    public boolean deleteHome() {
         // Method for removing a home
     }
 

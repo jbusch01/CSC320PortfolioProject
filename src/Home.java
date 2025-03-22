@@ -1,40 +1,23 @@
-// Class for handling information about a single home (object)
-
-import java.util.Scanner;
-
 public class Home {
-    public static void home(String[] args) {
-        Scanner scnr = new Scanner(System.in);
     
-    String homeID;
-    String homeModel;
-    String homeStreetAddress;
-    String homeCity;
-    String homeState;
-    int homeZipCode;
+    private String homeID;
+    private String homeModel;
+    private String homeStreetAddress;
+    private String homeCity;
+    private String homeState;
+    private int homeZipCode;
     
-    }
     // Constructor
-    public Home() {
-        System.out.println("Please enter the following details:");
-        System.out.println("1. Home Model: ");
-        home.homeModel = scnr.next();
-        System.out.println("2. Street Address: ");
-        home.homeStreetAddress = scnr.next();
-        System.out.println("3. City: ");
-        home.homeCity = scnr.next();
-        System.out.println("4. State: ");
-        home.homeState = scnr.next();
-        System.out.println("5. Zip Code: ");
-        home.homeZipCode = scnr.nextInt();
-
-        return homeModel, homeStreetAddress, homeCity, homeState, homeZipCode
-
-
+    public Home(String id, String model, String street, String city, String state, int zip) {
+        this.homeID = id;
+        this.homeModel = model;
+        this.homeStreetAddress = street;
+        this.homeCity = city;
+        this.homeState = state;
+        this.homeZipCode = zip;
     }
-    public void displayHome(String homeID, String homeModel, String homeStreetAddress, String homeCity, String homeState, int homeZipCode) {
-        // Method to print home details
-        System.out.println("Please verify the information you entered. Confirm with Y for yes and N for no.");
+
+    public void displayHome() {
         System.out.println("Home Information:");
         System.out.println("Home ID: " + homeID);
         System.out.println("Model: " + homeModel);
@@ -42,5 +25,13 @@ public class Home {
         System.out.println("City: " + homeCity);
         System.out.println("State: " + homeState);
         System.out.println("Zip Code: " + homeZipCode);
+    }
+
+    public String getHomeID() {
+        return homeID;
+    }
+
+    public String getHomeStreetAddress() {
+        return homeStreetAddress;
     }
 }
