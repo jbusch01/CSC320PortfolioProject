@@ -109,7 +109,7 @@ public static void main(String[] args)
         If user selects 2
             Call HomeManager.updateHome() (user prompted for home selection in method)
         If user selects 3
-            Call HomeManager.deleteHome()  (user prompted for home selection in method)
+            Call HomeManager.deleteHome() (user prompted for home selection in method)
         If user selects 4
             Call HomeManager.listHomes()
         If user selects 5
