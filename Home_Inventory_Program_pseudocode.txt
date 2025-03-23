@@ -17,7 +17,7 @@ Declare private variables
     private String salesStatus
 
 
-    public Home(String model, String street, String city, String state, int zip, int sqft, String status)
+    public Home(String model, String address, String city, String state, int zip, int sqft, String status)
 
         Increment homeCounter
         Set homeID to String.format("HID-%04d", homeCounter)
@@ -32,7 +32,7 @@ Declare private variables
     public void displayHome()
 
         Print "Home ID: " + homeID
-        Print "Model: " + modelName  
+        Print "Model: " + homeModel  
         Print "Street Address: " + homeStreetAddress
         Print "City: " + homeCity
         Print "State: " + homeState
@@ -79,7 +79,7 @@ public boolean updateHome(String homeID)
 
     Print "Current Inventory" + homeInventory
     Prompt user for homeID they want to update
-    For ech Home in homeInventory
+    For each Home in homeInventory
         If home.homeID equals homeID
             Print home information
             Prompt user for which field they would like to update(1. homeModel, 2. homeStreetAddress, 3. homeCity, 4. homeState, 5. homeZipCode, 6. squareFeet, 7. salesStatus, 8. all fields)
@@ -95,13 +95,13 @@ CLASS: Main
 
 public static void main(String[] args)
 
-    Create a HomeManger object
+    Create a HomeManager object
     Loop until user chooses to exit
         Display menu:
             1. Add Home
             2. Update Home
             3. Delete Home
-            4. List homeState
+            4. List Homes
             5. Exit
         Get user input
         If user selects 1
@@ -109,7 +109,7 @@ public static void main(String[] args)
         If user selects 2
             Call HomeManager.updateHome() (user prompted for home selection in method)
         If user selects 3
-            Call HomeManage.deleteHome()  (user prompted for home selection in method)
+            Call HomeManager.deleteHome()  (user prompted for home selection in method)
         If user selects 4
             Call HomeManager.listHomes()
         If user selects 5
