@@ -14,7 +14,7 @@ public class HomeManager {
     }
     // Method for listing the homes
     public void listHome() {
-        // Loop through homeList and display each home
+        // Loop through homeInventory and display each home
 
     }
 

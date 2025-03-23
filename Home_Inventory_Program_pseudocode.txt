@@ -1,0 +1,116 @@
+Home Inventory Program
+
+=====================================
+CLASS: Home
+=====================================
+
+Declare private variables
+
+    private static int homeCounter set to 0
+    private String homeID
+    private String homeModel
+    private String homeStreetAddress
+    private String homeCity
+    private String homeState
+    private int homeZipCode
+    private int squareFeet
+    private String salesStatus
+
+
+    public Home(String model, String street, String city, String state, int zip, int sqft, String status)
+
+        Increment homeCounter
+        Set homeID to String.format("HID-%04d", homeCounter)
+        Set squareFeet to sqft
+        Set homeStreetAddress to address
+        Set homeCity to city
+        Set homeState to state
+        Set homeZipCode to zip
+        Set squareFeet to sqft
+        Set salesStatus to status
+
+    public void displayHome()
+
+        Print "Home ID: " + homeID
+        Print "Model: " + modelName  
+        Print "Street Address: " + homeStreetAddress
+        Print "City: " + homeCity
+        Print "State: " + homeState
+        Print "Zip Code: " + homeZipCode
+        Print "Square Feet: " + squareFeet
+        Print "Sales Status: " + salesStatus
+
+    public String getHomeID()
+        Return homeID
+
+    public String getHomeStreetAddress()
+        Return homeStreetAddress
+
+
+=====================================
+CLASS: HomeManager
+=====================================
+
+public void addHome()
+    Create scanner object
+    Create ArrayList homeInventory
+
+    Prompt user for homeModel, homeStreetAddress, homeCity, homeState, homeZipCode, squareFeet, salesStatus
+    Create new Home object using user input
+    Add new home to homeInventory
+    Print "Home added successfully"
+
+public void listHomes()
+
+    for each Home in homeInventory
+        Call home.displayHome()
+
+public boolean deleteHome(String homeID)
+
+    Print "Current inventory" + homeInventory
+    Prompt user for the homeID they want to delete
+    For each Home in homeInventory
+        If home.homeID equals ID
+            Remove home from homeInventory
+            Return true
+    Return false
+
+public boolean updateHome(String homeID)
+
+    Print "Current Inventory" + homeInventory
+    Prompt user for homeID they want to update
+    For ech Home in homeInventory
+        If home.homeID equals homeID
+            Print home information
+            Prompt user for which field they would like to update(1. homeModel, 2. homeStreetAddress, 3. homeCity, 4. homeState, 5. homeZipCode, 6. squareFeet, 7. salesStatus, 8. all fields)
+            Create updated Home object
+            Replace existing Home with new object
+            Return true
+    Return false
+
+
+=====================================
+CLASS: Main
+=====================================
+
+public static void main(String[] args)
+
+    Create a HomeManger object
+    Loop until user chooses to exit
+        Display menu:
+            1. Add Home
+            2. Update Home
+            3. Delete Home
+            4. List homeState
+            5. Exit
+        Get user input
+        If user selects 1
+            Call HomeManager.addHome()
+        If user selects 2
+            Call HomeManager.updateHome() (user prompted for home selection in method)
+        If user selects 3
+            Call HomeManage.deleteHome()  (user prompted for home selection in method)
+        If user selects 4
+            Call HomeManager.listHomes()
+        If user selects 5
+            Exit loop       
