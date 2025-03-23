@@ -21,7 +21,7 @@ Declare private variables
 
         Increment homeCounter
         Set homeID to String.format("HID-%04d", homeCounter)
-        Set squareFeet to sqft
+        Set homeModel to model
         Set homeStreetAddress to address
         Set homeCity to city
         Set homeState to state
@@ -39,6 +39,7 @@ Declare private variables
         Print "Zip Code: " + homeZipCode
         Print "Square Feet: " + squareFeet
         Print "Sales Status: " + salesStatus
+        Print "------------------------" (separator)
 
     public String getHomeID()
         Return homeID
@@ -67,7 +68,8 @@ public void listHomes()
 
 public boolean deleteHome(String homeID)
 
-    Print "Current inventory" + homeInventory
+    Print "Current Inventory:"
+    Call listHomes()
     Prompt user for the homeID they want to delete
     For each Home in homeInventory
         If home.homeID equals ID
@@ -77,7 +79,8 @@ public boolean deleteHome(String homeID)
 
 public boolean updateHome(String homeID)
 
-    Print "Current Inventory" + homeInventory
+    Print "Current Inventory:"
+    Call listHomes()
     Prompt user for homeID they want to update
     For each Home in homeInventory
         If home.homeID equals homeID
