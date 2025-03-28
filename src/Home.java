@@ -11,7 +11,7 @@ public class Home {
     private String salesStatus;
     
     // Constructor
-    public Home(String id, String model, String street, String city, String state, int zip, int sqft, String status) {
+    public Home(String model, String street, String city, String state, int zip, int sqft, String status) {
         
         homeCounter ++;
         this.homeID = String.format("HID-%04d", homeCounter);
