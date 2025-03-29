@@ -111,7 +111,7 @@ public class HomeManager {
                 while (true) {
                     System.out.println("\nHome found! Which option would you like to update (enter the option number)?");
 
-                    System.out.println("Update options:\n");
+                    System.out.println("\nUpdate options:");
                     System.out.println("1. Model");
                     System.out.println("2. Street Address");
                     System.out.println("3. City");
@@ -198,7 +198,7 @@ public class HomeManager {
 
             writer = new BufferedWriter(new FileWriter(file));
 
-            writer.write("\nHome Inventory List");
+            writer.write("\nHome Inventory List\n");
             writer.write("===================\n");
 
             for (Home home : homeInventory) {
