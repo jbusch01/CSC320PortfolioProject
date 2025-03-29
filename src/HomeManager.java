@@ -12,51 +12,51 @@ public class HomeManager {
 
     // Method for adding a home to the ArrayList
     public void addHome() {
-        System.out.println("***Adding a Home***\n");
+        System.out.println("\n***Adding a Home***\n");
         
         System.out.println("Enter the home's model: ");
         String model = scnr.nextLine();
 
-        System.out.println("Enter the home's street address: ");
+        System.out.println("\nEnter the home's street address: ");
         String address = scnr.nextLine();
 
-        System.out.println("Enter the city: ");
+        System.out.println("\nEnter the city: ");
         String city = scnr.nextLine();
 
-        System.out.println("Enter the state: ");
+        System.out.println("\nEnter the state: ");
         String state = scnr.nextLine();
 
-        System.out.println("Enter the zip code: ");
+        System.out.println("\nEnter the zip code: ");
         int zip = scnr.nextInt();
         scnr.nextLine(); // newline buffer
 
-        System.out.println("Enter the square footage: ");
+        System.out.println("\nEnter the square footage: ");
         int sqft = scnr.nextInt();
         scnr.nextLine(); // newline buffer
 
-        System.out.println("Enter the sale status: ");
+        System.out.println("\nEnter the sale status: ");
         String status = scnr.nextLine();
         
         Home newHome = new Home(model, address, city, state, zip, sqft, status);
 
-        System.out.println("Here is the information you entered:");
+        System.out.println("\nHere is the information you entered:");
         System.out.println("Model: " + model);
         System.out.println("Address: " + address + ", " + city + ", " + state + " " + zip);
         System.out.println("Square Footage: " + sqft);
         System.out.println("Sale Status: " + status);
 
         homeInventory.add(newHome);
-        System.out.println("Home added successfully!");
+        System.out.println("\nHome added successfully!");
 
     }
     // Method for listing the homes
     public void listHomes() {
         if (homeInventory.isEmpty()) {
-            System.out.println("No homes in inventory.");
+            System.out.println("\nNo homes in inventory.");
             return;
         }
 
-        System.out.println("Current Home Inventory:");
+        System.out.println("\nCurrent Home Inventory:");
         for (Home home : homeInventory) {
             home.displayHome();
         }
@@ -65,12 +65,12 @@ public class HomeManager {
     // Method for removing a home
     public boolean deleteHome(Scanner scnr) { // This part was messy trying to figure out how to properly get Scanner working for best practice
         if (homeInventory.isEmpty()) {
-            System.out.println("No homes in inventory to delete.");
+            System.out.println("\nNo homes in inventory to delete.");
             return false;
         }
 
         listHomes(); // Show current inventory for user reference
-        System.out.println("Enter the Home ID to delete: ");
+        System.out.println("\nEnter the Home ID to delete: ");
         String homeID = scnr.nextLine();
 
         boolean found = false;
@@ -80,7 +80,7 @@ public class HomeManager {
             Home home = iterator.next();
             if (home.getHomeID().equals(homeID)) {
                 iterator.remove();
-                System.out.println("Home successfully deleted.");
+                System.out.println("\nHome successfully deleted.");
                 found = true;
                 break;
             }
@@ -101,7 +101,7 @@ public class HomeManager {
         }
 
         listHomes();
-        System.out.println("Enter the Home's ID you want to update from the above list: ");
+        System.out.println("\nEnter the Home's ID you want to update from the above list: ");
         String homeID = scnr.nextLine();
 
         for (Home home : homeInventory) {
@@ -109,8 +109,9 @@ public class HomeManager {
                 boolean updated = false;
 
                 while (true) {
-                    System.out.println("Home found! Which option would you like to update (enter the option number)?");
+                    System.out.println("\nHome found! Which option would you like to update (enter the option number)?");
 
+                    System.out.println("Update options:\n");
                     System.out.println("1. Model");
                     System.out.println("2. Street Address");
                     System.out.println("3. City");
@@ -119,74 +120,74 @@ public class HomeManager {
                     System.out.println("6. Square Footage");
                     System.out.println("7. Sale Status");
                     System.out.println("8. Done Updating");
-                    System.out.println("Enter choice (choose only one): ");
+                    System.out.println("Enter the option number (choose only one): ");
 
                     int choice = scnr.nextInt();
                     scnr.nextLine();
 
                     switch (choice) {
                         case 1:
-                            System.out.println("Enter new model: ");
+                            System.out.println("\nEnter new model: ");
                             home.setHomeModel(scnr.nextLine());
                             updated = true;
                             break;
                         case 2:
-                            System.out.println("Enter new street address: ");
+                            System.out.println("\nEnter new street address: ");
                             home.setStreetAddress(scnr.nextLine());
                             updated = true;
                             break;
                         case 3:
-                            System.out.println("Enter new city: ");
+                            System.out.println("\nEnter new city: ");
                             home.setCity(scnr.nextLine());
                             updated = true;
                             break;
                         case 4:
-                            System.out.println("Enter new state: ");
+                            System.out.println("\nEnter new state: ");
                             home.setState(scnr.nextLine());
                             updated = true;
                             break;
                         case 5:
-                            System.out.println("Enter new zip code: ");
+                            System.out.println("\nEnter new zip code: ");
                             int newZip = scnr.nextInt();
                             scnr.nextLine(); // To consume newline
                             home.setZipCode(newZip);
                             updated = true;
                             break;
                         case 6:
-                            System.out.println("Enter new square footage: ");
+                            System.out.println("\nEnter new square footage: ");
                             int newSqft = scnr.nextInt();
                             scnr.nextLine(); // To consume newline
                             home.setSquareFeet(newSqft);
                             updated = true;
                             break;
                         case 7:
-                            System.out.println("Enter new sale status: ");
+                            System.out.println("\nEnter new sale status: ");
                             home.setSaleStatus(scnr.nextLine());
                             updated = true;
                             break;
                         case 8:
                             if (updated) {
-                                System.out.println("Updating complete. Home successfully updated.");
+                                System.out.println("\nUpdating complete. Home successfully updated.");
                             } else {
-                                System.out.println("No updates were made.");
+                                System.out.println("\nNo updates were made.");
                             }
                             return updated;
                         default:
-                            System.out.println("Invalid option. Please choose a valid option.");
+                            System.out.println("\nInvalid option. Please choose a valid option.");
 
                     }
                 }
             }
         }
 
-        System.out.println("Home not found.");
+        System.out.println("\nHome not found.");
         return false;
 
     }
 
     public void exportFile() {
         if (homeInventory.isEmpty()) {
-            System.out.println("No homes in inventory to export.");
+            System.out.println("\nNo homes in inventory to export.");
             return;
         }
 
@@ -197,7 +198,7 @@ public class HomeManager {
 
             writer = new BufferedWriter(new FileWriter(file));
 
-            writer.write("Home Inventory List\n");
+            writer.write("\nHome Inventory List");
             writer.write("===================\n");
 
             for (Home home : homeInventory) {
@@ -209,15 +210,15 @@ public class HomeManager {
                 writer.write("----------------------\n"); // To visually separate objects for readability
             }
 
-            System.out.println("Home Inventory successfully exported to Desktop as 'HomeInventory.txt'.");
+            System.out.println("\nHome Inventory successfully exported to Desktop as 'HomeInventory.txt'.");
 
         } catch (IOException e) {
-            System.out.println("Error exporting file: " + e.getMessage());
+            System.out.println("\nError exporting file: " + e.getMessage());
         } finally {
             try {
                 if (writer != null) writer.close();
             } catch (IOException e) {
-                System.out.println("Error closing file writer: " + e.getMessage());
+                System.out.println("\nError closing file writer: " + e.getMessage());
             }
         }
     }

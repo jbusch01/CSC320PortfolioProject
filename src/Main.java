@@ -6,7 +6,7 @@ public class Main {
         HomeManager manager = new HomeManager();
 
         while (true) {
-            System.out.println("Please choose from one of the following options:");
+            System.out.println("\nPlease choose from one of the following options:");
             System.out.println("1. Add a Home");
             System.out.println("2. View Current Inventory");
             System.out.println("3. Update a Home");
@@ -20,7 +20,7 @@ public class Main {
                 menuOption = scnr.nextInt();
                 scnr.nextLine();
             } else {
-                System.out.println("Invalid input. Please enter a number between 1 and 6.");
+                System.out.println("\nInvalid input. Please enter a number between 1 and 6.");
                 scnr.nextLine();
                 continue;
             }
@@ -31,7 +31,7 @@ public class Main {
                     try {
 						manager.addHome();
 					} catch (Exception e) {
-						System.out.println("Error adding home: " + e.getMessage());
+						System.out.println("\nError adding home: " + e.getMessage());
 					}
                     break;
                 case 2:
@@ -41,33 +41,33 @@ public class Main {
                     try {
 					    manager.updateHome(scnr);
                     } catch (Exception e) {
-                        System.out.println("Error updating home: " + e.getMessage());
+                        System.out.println("\nError updating home: " + e.getMessage());
                     }
                     break;
                 case 4:
                     try {
 						manager.deleteHome(scnr);
 					} catch (Exception e) {
-						System.out.println("Error deleting home: " + e.getMessage());
+						System.out.println("\nError deleting home: " + e.getMessage());
 					}
                     break;
                 case 5:
-                    System.out.println("Please confirm you would like to export the home inventory to a file (Y/N): ");
+                    System.out.println("\nPlease confirm you would like to export the home inventory to a file (Y/N): ");
                     String confirm = scnr.nextLine().trim().toLowerCase();
 
                     if (confirm.equals("y")) {
                         manager.exportFile();
                     } else {
-                        System.out.println("Export canceled.");
+                        System.out.println("\nExport canceled.");
                     }
                     break;
                 case 6:
                     manager.closeScanner();
                     scnr.close();
-                    System.out.println("Exiting program...");
+                    System.out.println("\nExiting program...take care!");
                     System.exit(0);
                 default:
-                    System.out.println("Invalid option. Please enter a valid option.");
+                    System.out.println("\nInvalid option. Please enter a valid option.");
                     break;
 
             }

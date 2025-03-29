@@ -25,7 +25,7 @@ public class Home {
     }
 
     public void displayHome() {
-        System.out.println("Home Information:");
+        System.out.println("\nHome Information:");
         System.out.println("Home ID: " + homeID);
         System.out.println("Model: " + homeModel);
         System.out.println("Street Address: " + homeStreetAddress);
