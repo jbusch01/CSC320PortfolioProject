@@ -62,6 +62,7 @@ public class Main {
                     }
                     break;
                 case 6:
+                    manager.closeScanner();
                     scnr.close();
                     System.out.println("Exiting program...");
                     System.exit(0);

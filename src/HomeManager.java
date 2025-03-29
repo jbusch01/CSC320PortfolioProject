@@ -101,7 +101,7 @@ public class HomeManager {
         }
 
         listHomes();
-        System.out.println("Enter the Homes ID to update from the above list: ");
+        System.out.println("Enter the Home's ID you want to update from the above list: ");
         String homeID = scnr.nextLine();
 
         for (Home home : homeInventory) {
@@ -219,6 +219,12 @@ public class HomeManager {
             } catch (IOException e) {
                 System.out.println("Error closing file writer: " + e.getMessage());
             }
+        }
+    }
+
+    public void closeScanner() {
+        if (scnr != null) {
+            scnr.close();
         }
     }
 }
