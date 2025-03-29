@@ -64,7 +64,7 @@ public class HomeManager {
     // Method for removing a home
     public boolean deleteHome(Scanner scnr) { // This part was messy trying to figure out how to properly get Scanner working for best practice
         if (homeInventory.isEmpty()) {
-            System.out.println("No homes in inventory to delete: ");
+            System.out.println("No homes in inventory to delete.");
             return false;
         }
 
@@ -87,10 +87,14 @@ public class HomeManager {
     }
 
     // Method for updating a home
-    public boolean updateHome() {
-        listHomes();
+    public boolean updateHome(Scanner scnr) {
+        if (homeInventory.isEmpty()) {
+            System.out.println("No homes available to update.");
+            return false;
+        }
 
-        System.out.println("Enter the Home's ID you would like to update from the above list: ");
+        listHomes();
+        System.out.println("Enter the Home's ID to update from the above list: ");
         String homeID = scnr.nextLine();
 
         for (Home home : homeInventory) {
@@ -117,32 +121,41 @@ public class HomeManager {
                         case 1:
                             System.out.println("Enter new model: ");
                             home.setHomeModel(scnr.nextLine());
+                            updated = true;
                             break;
                         case 2:
                             System.out.println("Enter new street address: ");
                             home.setStreetAddress(scnr.nextLine());
+                            updated = true;
                             break;
                         case 3:
                             System.out.println("Enter new city: ");
                             home.setCity(scnr.nextLine());
+                            updated = true;
                             break;
                         case 4:
                             System.out.println("Enter new state: ");
                             home.setState(scnr.nextLine());
+                            updated = true;
                             break;
                         case 5:
                             System.out.println("Enter new zip code: ");
-                            home.setZipCode(scnr.nextInt());
-                            scnr.nextLine();
+                            int newZip = scnr.nextInt();
+                            scnr.nextLine(); // To consume newline
+                            home.setZipCode(newZip);
+                            updated = true;
                             break;
                         case 6:
                             System.out.println("Enter new square footage: ");
-                            home.setSquareFeet(scnr.nextInt());
-                            scnr.nextLine();
+                            int newSqft = scnr.nextInt();
+                            scnr.nextLine(); // To consume newline
+                            home.setSquareFeet(newSqft);
+                            updated = true;
                             break;
                         case 7:
                             System.out.println("Enter new sale status: ");
                             home.setSaleStatus(scnr.nextLine());
+                            updated = true;
                             break;
                         case 8:
                             if (updated) {
@@ -160,7 +173,7 @@ public class HomeManager {
         }
 
         System.out.println("Home not found.");
-        return true;
+        return false;
 
     }
 
@@ -170,11 +183,12 @@ public class HomeManager {
             return;
         }
 
+        BufferedWriter writer = null;
         try {
             String desktopPath = System.getProperty("user.home") + File.separator + "Desktop";
             File file = new File(desktopPath, "HomeInventory.txt");
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer = new BufferedWriter(new FileWriter(file));
 
             writer.write("Home Inventory List\n");
             writer.write("===================\n");
@@ -183,16 +197,21 @@ public class HomeManager {
                 writer.write("Home ID: " + home.getHomeID() + "\n");
                 writer.write("Model: " + home.getHomeModel() + "\n");
                 writer.write("Address: " + home.getHomeStreetAddress() + ", " + home.getHomeCity() + ", " + home.getHomeState() + " " + home.getHomeZipCode() + "\n");
-                writer.write("Square Footage: " + home.getSquareFootage() + "\n");
+                writer.write("Square Footage: " + home.getSquareFeet() + "\n");
                 writer.write("Sale Status: " + home.getSaleStatus() + "\n");
                 writer.write("----------------------\n"); // To visually separate objects for readability
             }
 
-            writer.close();
-            System.out.println("Home Iventory successfully exported to Desktop as 'HomeInventory.txt'.");
+            System.out.println("Home Inventory successfully exported to Desktop as 'HomeInventory.txt'.");
 
         } catch (IOException e) {
-            System.out.println("Error exporting file: " + e.getMessage());;
+            System.out.println("Error exporting file: " + e.getMessage());
+        } finally {
+            try {
+                if (writer != null) writer.close();
+            } catch (IOException e) {
+                System.out.println("Error closing file writer: " + e.getMessage());
+            }
         }
     }
 }

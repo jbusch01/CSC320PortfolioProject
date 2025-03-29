@@ -31,18 +31,23 @@ public class Main {
 					manager.listHomes();
                     break;
                 case 3:
-					manager.updateHome();
+					manager.updateHome(scnr);
                     break;
                 case 4:
-                    manager.deleteHome(scnr);
+                    try {
+						manager.deleteHome(scnr);
+					} catch (Exception e) {
+						System.out.println("Error deleting home: " + e.getMessage());
+					}
                     break;
                 case 5:
                     manager.exportFile();
                     break;
                 case 6:
+                    scnr.close();
                     System.exit(0);
                 default:
-                    System.out.println("Invalid option. Please enter a vaild option.");
+                    System.out.println("Invalid option. Please enter a valid option.");
                     break;
 
             }

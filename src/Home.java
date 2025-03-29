@@ -60,7 +60,7 @@ public class Home {
         return homeZipCode;
     }
 
-    public int getSquareFootage() {
+    public int getSquareFeet() {
         return squareFeet;
     }
 
