@@ -1,6 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class HomeManager {
     private Scanner scnr = new Scanner(System.in);
@@ -158,5 +162,37 @@ public class HomeManager {
         System.out.println("Home not found.");
         return true;
 
+    }
+
+    public void exportFile() {
+        if (homeInventory.isEmpty()) {
+            System.out.println("No homes in inventory to export.");
+            return;
+        }
+
+        try {
+            String desktopPath = System.getProperty("user.home") + File.separator + "Desktop";
+            File file = new File(desktopPath, "HomeInventory.txt");
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+
+            writer.write("Home Inventory List\n");
+            writer.write("===================\n");
+
+            for (Home home : homeInventory) {
+                writer.write("Home ID: " + home.getHomeID() + "\n");
+                writer.write("Model: " + home.getHomeModel() + "\n");
+                writer.write("Address: " + home.getHomeStreetAddress() + ", " + home.getHomeCity() + ", " + home.getHomeState() + " " + home.getHomeZipCode() + "\n");
+                writer.write("Square Footage: " + home.getSquareFootage() + "\n");
+                writer.write("Sale Status: " + home.getSaleStatus() + "\n");
+                writer.write("----------------------\n"); // To visually separate objects for readability
+            }
+
+            writer.close();
+            System.out.println("Home Iventory successfully exported to Desktop as 'HomeInventory.txt'.");
+
+        } catch (IOException e) {
+            System.out.println("Error exporting file: " + e.getMessage());;
+        }
     }
 }

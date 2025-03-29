@@ -43,6 +43,30 @@ public class Home {
     public String getHomeStreetAddress() {
         return homeStreetAddress;
     }
+
+    public String getHomeModel() {
+        return homeModel;
+    }
+
+    public String getHomeCity() {
+        return homeCity;
+    }
+
+    public String getHomeState() {
+        return homeState;
+    }
+
+    public int getHomeZipCode() {
+        return homeZipCode;
+    }
+
+    public int getSquareFootage() {
+        return squareFeet;
+    }
+
+    public String getSaleStatus() {
+        return saleStatus;
+    }
     
     public void setHomeModel(String model) {
         this.homeModel = model;
