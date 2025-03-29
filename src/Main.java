@@ -14,8 +14,10 @@ public class Main {
             System.out.println("5. Export Inventory List to Desktop");
             System.out.println("6. Exit Program");
 
+            int menuOption;
+
             if (scnr.hasNextInt()) {
-                int menuOption = scnr.nextInt();
+                menuOption = scnr.nextInt();
                 scnr.nextLine();
             } else {
                 System.out.println("Invalid input. Please enter a number between 1 and 6.");
