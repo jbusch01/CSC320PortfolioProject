@@ -80,7 +80,7 @@ public class HomeManager {
             Home home = iterator.next();
             if (home.getHomeID().equals(homeID)) {
                 iterator.remove();
-                System.out.println("Home deleted.");
+                System.out.println("Home successfully deleted.");
                 found = true;
                 break;
             }
