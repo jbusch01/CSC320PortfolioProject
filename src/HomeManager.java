@@ -8,6 +8,8 @@ public class HomeManager {
 
     // Method for adding a home to the ArrayList
     public void addHome() {
+        System.out.println("***Adding a Home***\n");
+        
         System.out.println("Enter the home's model: ");
         String model = scnr.nextLine();
 
@@ -56,9 +58,17 @@ public class HomeManager {
     }
 
     // Method for removing a home
-    public boolean deleteHome(String homeID) {
-        Iterator<Home> iterator = homeInventory.iterator(); // To avoid ConcurrentModificationException
+    public boolean deleteHome(Scanner scnr) { // This part was messy trying to figure out how to properly get Scanner working for best practice
+        if (homeInventory.isEmpty()) {
+            System.out.println("No homes in inventory to delete: ");
+            return false;
+        }
 
+        listHomes(); // Show current inventory for user reference
+        System.out.println("Enter the Home ID to delete: ");
+        String homeID = scnr.nextLine();
+
+        Iterator<Home> iterator = homeInventory.iterator(); // To avoid ConcurrentModificationException
         while (iterator.hasNext()) {
             Home home = iterator.next();
             if (home.getHomeID().equals(homeID)) {
@@ -84,8 +94,7 @@ public class HomeManager {
                 boolean updated = false;
 
                 while (true) {
-                    System.out.println("Home found! Which option would you like to update?");
-                    System.out.println("Please enter only one option. If multiple options need to be updated, complete one, then select another.");
+                    System.out.println("Home found! Which option would you like to update (enter the option number)?");
 
                     System.out.println("1. Model");
                     System.out.println("2. Street Address");
@@ -135,7 +144,7 @@ public class HomeManager {
                             if (updated) {
                                 System.out.println("Updating complete. Home successfully updated.");
                             } else {
-                                System.out.println("No upadtes were made.");
+                                System.out.println("No updates were made.");
                             }
                             return updated;
                         default:
