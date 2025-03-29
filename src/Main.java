@@ -13,10 +13,15 @@ public class Main {
             System.out.println("4. Delete a Home");
             System.out.println("5. Export Inventory List to Desktop");
             System.out.println("6. Exit Program");
-            
-            int menuOption = scnr.nextInt();
-            scnr.nextLine(); // To consume newline
 
+            if (scnr.hasNextInt()) {
+                int menuOption = scnr.nextInt();
+                scnr.nextLine();
+            } else {
+                System.out.println("Invalid input. Please enter a number between 1 and 6.");
+                scnr.nextLine();
+                continue;
+            }
             
             switch (menuOption) {
 
@@ -31,7 +36,11 @@ public class Main {
 					manager.listHomes();
                     break;
                 case 3:
-					manager.updateHome(scnr);
+                    try {
+					    manager.updateHome(scnr);
+                    } catch (Exception e) {
+                        System.out.println("Error updating home: " + e.getMessage());
+                    }
                     break;
                 case 4:
                     try {
@@ -41,10 +50,18 @@ public class Main {
 					}
                     break;
                 case 5:
-                    manager.exportFile();
+                    System.out.println("Please confirm you would like to export the home inventory to a file (Y/N): ");
+                    String confirm = scnr.nextLine().trim().toLowerCase();
+
+                    if (confirm.equals("y")) {
+                        manager.exportFile();
+                    } else {
+                        System.out.println("Export canceled.");
+                    }
                     break;
                 case 6:
                     scnr.close();
+                    System.out.println("Exiting program...");
                     System.exit(0);
                 default:
                     System.out.println("Invalid option. Please enter a valid option.");

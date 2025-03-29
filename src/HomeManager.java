@@ -28,10 +28,11 @@ public class HomeManager {
 
         System.out.println("Enter the zip code: ");
         int zip = scnr.nextInt();
+        scnr.nextLine(); // newline buffer
 
         System.out.println("Enter the square footage: ");
         int sqft = scnr.nextInt();
-        scnr.nextLine();
+        scnr.nextLine(); // newline buffer
 
         System.out.println("Enter the sale status: ");
         String status = scnr.nextLine();
@@ -72,18 +73,24 @@ public class HomeManager {
         System.out.println("Enter the Home ID to delete: ");
         String homeID = scnr.nextLine();
 
+        boolean found = false;
+
         Iterator<Home> iterator = homeInventory.iterator(); // To avoid ConcurrentModificationException
         while (iterator.hasNext()) {
             Home home = iterator.next();
             if (home.getHomeID().equals(homeID)) {
                 iterator.remove();
                 System.out.println("Home deleted.");
-                return true;
+                found = true;
+                break;
             }
         }
 
-        System.out.println("Home not found.");
-        return false;
+        if (!found) {
+            System.out.println("Home not found.");
+        }
+
+        return found;
     }
 
     // Method for updating a home
@@ -94,7 +101,7 @@ public class HomeManager {
         }
 
         listHomes();
-        System.out.println("Enter the Home's ID to update from the above list: ");
+        System.out.println("Enter the Homes ID to update from the above list: ");
         String homeID = scnr.nextLine();
 
         for (Home home : homeInventory) {
