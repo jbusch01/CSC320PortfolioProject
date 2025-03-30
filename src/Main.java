@@ -14,17 +14,14 @@ public class Main {
             System.out.println("5. Export Inventory List to Desktop");
             System.out.println("6. Exit Program");
 
-            int menuOption;
-
-            if (scnr.hasNextInt()) {
-                menuOption = scnr.nextInt();
-                scnr.nextLine();
-            } else {
-                System.out.println("\nInvalid input. Please enter a number between 1 and 6.");
-                scnr.nextLine();
+            int menuOption = 0;
+            try {
+                menuOption = Integer.parseInt(scnr.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("\nInvalid option. Please enter a number between 1 and 6 (numbers only).");
                 continue;
             }
-            
+          
             switch (menuOption) {
 
                 case 1:

@@ -6,12 +6,12 @@ public class Home {
     private String homeStreetAddress;
     private String homeCity;
     private String homeState;
-    private int homeZipCode;
+    private String homeZipCode;
     private int squareFeet;
     private String saleStatus;
     
     // Constructor
-    public Home(String model, String street, String city, String state, int zip, int sqft, String status) {
+    public Home(String model, String street, String city, String state, String zip, int sqft, String status) {
         
         homeCounter ++;
         this.homeID = String.format("HID-%04d", homeCounter);
@@ -56,7 +56,7 @@ public class Home {
         return homeState;
     }
 
-    public int getHomeZipCode() {
+    public String getHomeZipCode() {
         return homeZipCode;
     }
 
@@ -84,7 +84,7 @@ public class Home {
         this.homeState = state;
     }
     
-    public void setZipCode(int zip) {
+    public void setZipCode(String zip) {
         this.homeZipCode = zip;
     }
     

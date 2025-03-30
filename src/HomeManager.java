@@ -27,12 +27,20 @@ public class HomeManager {
         String state = scnr.nextLine();
 
         System.out.println("\nEnter the zip code: ");
-        int zip = scnr.nextInt();
-        scnr.nextLine(); // newline buffer
+        String zip = scnr.nextLine();
 
         System.out.println("\nEnter the square footage: ");
-        int sqft = scnr.nextInt();
-        scnr.nextLine(); // newline buffer
+        int sqft = 0;
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                sqft = Integer.parseInt(scnr.nextLine());
+                validInput = true;
+            } catch (NumberFormatException e) {
+                System.out.println("\nInvalid input. Please enter the square footage using only numbers: ");
+            }
+        }
 
         System.out.println("\nEnter the sale status: ");
         String status = scnr.nextLine();
@@ -122,9 +130,14 @@ public class HomeManager {
                     System.out.println("8. Done Updating");
                     System.out.println("Enter the option number (choose only one): ");
 
-                    int choice = scnr.nextInt();
-                    scnr.nextLine();
-
+                    int choice = 0;
+                    try {
+                        choice = Integer.parseInt(scnr.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("\nInvalid input. Please enter a number between 1 and 8 (numbers only).");
+                        continue;
+                    }
+                    
                     switch (choice) {
                         case 1:
                             System.out.println("\nEnter new model: ");
@@ -148,17 +161,19 @@ public class HomeManager {
                             break;
                         case 5:
                             System.out.println("\nEnter new zip code: ");
-                            int newZip = scnr.nextInt();
-                            scnr.nextLine(); // To consume newline
+                            String newZip = scnr.nextLine();
                             home.setZipCode(newZip);
                             updated = true;
                             break;
                         case 6:
                             System.out.println("\nEnter new square footage: ");
-                            int newSqft = scnr.nextInt();
-                            scnr.nextLine(); // To consume newline
-                            home.setSquareFeet(newSqft);
-                            updated = true;
+                            try {
+                                int newSqft = Integer.parseInt(scnr.nextLine());
+                                home.setSquareFeet(newSqft);
+                                updated = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("\nInvalid input. Please enter a numeric value (numbers only).");
+                            }                            
                             break;
                         case 7:
                             System.out.println("\nEnter new sale status: ");
