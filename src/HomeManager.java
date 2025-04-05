@@ -65,7 +65,7 @@ public class HomeManager {
         System.out.println("\nHere is the information you entered:");
         System.out.println("Model: " + model);
         System.out.println("Address: " + address + ", " + city + ", " + state + " " + zip);
-        System.out.println("Price: " + price);
+        System.out.println("Price: $" + String.format("%.2f", price));
         System.out.println("Square Footage: " + sqft);
         System.out.println("Sale Status: " + status);
 
