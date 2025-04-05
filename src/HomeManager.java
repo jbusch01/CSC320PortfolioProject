@@ -30,16 +30,28 @@ public class HomeManager {
         String zip = scnr.nextLine();
 
         System.out.println(("\nEnter the home's price: "));
-        double price = scnr.nextDouble();
+        double price = 0.0;
+        boolean validPrice = false;
+
+        while (!validPrice) {
+            try {
+                String input = scnr.nextLine().replace(",", "");
+                price = Double.parseDouble(input);
+                validPrice = true;
+            } catch (NumberFormatException e) {
+                System.out.println("\nInvalid input. Please enter the price using only numbers and decimals: ");
+            }
+        }
 
         System.out.println("\nEnter the square footage: ");
         int sqft = 0;
-        boolean validInput = false;
+        boolean validSqft = false;
 
-        while (!validInput) {
+        while (!validSqft) {
             try {
-                sqft = Integer.parseInt(scnr.nextLine());
-                validInput = true;
+                String input = scnr.nextLine().replace(",", "");
+                sqft = Integer.parseInt(input);
+                validSqft = true;
             } catch (NumberFormatException e) {
                 System.out.println("\nInvalid input. Please enter the square footage using only numbers: ");
             }
