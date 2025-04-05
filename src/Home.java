@@ -33,7 +33,7 @@ public class Home {
         System.out.println("Street Address: " + homeStreetAddress);
         System.out.println("City: " + homeCity);
         System.out.println("State: " + homeState);
-        System.out.println("Price: " + homePrice);
+        System.out.println("Price: $" + String.format("%.2f", homePrice));
         System.out.println("Zip Code: " + homeZipCode);
         System.out.println("Square Feet: " + squareFeet);
         System.out.println("Sales Status: " + saleStatus);

@@ -261,7 +261,7 @@ public class HomeManager {
                 writer.write("Home ID: " + home.getHomeID() + "\n");
                 writer.write("Model: " + home.getHomeModel() + "\n");
                 writer.write("Address: " + home.getHomeStreetAddress() + ", " + home.getHomeCity() + ", " + home.getHomeState() + " " + home.getHomeZipCode() + "\n");
-                writer.write("Price: " + home.getHomePrice() + "\n");
+                writer.write("Price: $" + String.format("%.2f", home.getHomePrice()) + "\n");
                 writer.write("Square Footage: " + home.getSquareFeet() + "\n");
                 writer.write("Sale Status: " + home.getSaleStatus() + "\n");
                 writer.write("----------------------\n"); // To visually separate objects for readability
