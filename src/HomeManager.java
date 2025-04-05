@@ -183,24 +183,38 @@ public class HomeManager {
                             updated = true;
                             break;
                         case 6:
+                            double newPrice = 0.0;
+                            boolean validPrice = false;
+                            
                             System.out.println("\nEnter new price: ");
-                            try {
-                                double newPrice = Double.parseDouble(scnr.nextLine());
-                                home.setHomePrice(newPrice);
-                                updated = true;
-                            } catch (NumberFormatException e) {
-                                System.out.println("\nInvalid input. Please enter a numeric value (numbers and decimals only).");
+                            while (!validPrice) {
+                                try {
+                                    String priceInput = scnr.nextLine().replace(",", "");
+                                    newPrice = Double.parseDouble(priceInput);
+                                    validPrice = true;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("\nInvalid input. Please enter a numeric value (numbers and decimals only).");
+                                }
                             }
+                            home.setHomePrice(newPrice);
+                            updated = true;
                             break;
                         case 7:
+                            int newSqft = 0;
+                            boolean vaildSqft = false;
+
                             System.out.println("\nEnter new square footage: ");
-                            try {
-                                int newSqft = Integer.parseInt(scnr.nextLine());
-                                home.setSquareFeet(newSqft);
-                                updated = true;
-                            } catch (NumberFormatException e) {
-                                System.out.println("\nInvalid input. Please enter a numeric value (numbers only).");
-                            }                            
+                            while (!vaildSqft) {
+                                try {
+                                    String sqftInput = scnr.nextLine().replace(",", "");
+                                    newSqft = Integer.parseInt(sqftInput);
+                                    vaildSqft = true;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("\nInvalid input. Please enter a numeric value (numbers only).");
+                                }
+                            }
+                            home.setSquareFeet(newSqft);
+                            updated = true;    
                             break;
                         case 8:
                             System.out.println("\nEnter new sale status: ");
