@@ -7,11 +7,12 @@ public class Home {
     private String homeCity;
     private String homeState;
     private String homeZipCode;
+    private double homePrice;
     private int squareFeet;
     private String saleStatus;
     
     // Constructor
-    public Home(String model, String street, String city, String state, String zip, int sqft, String status) {
+    public Home(String model, String street, String city, String state, String zip, double price, int sqft, String status) {
         
         homeCounter ++;
         this.homeID = String.format("HID-%04d", homeCounter);
@@ -20,6 +21,7 @@ public class Home {
         this.homeCity = city;
         this.homeState = state;
         this.homeZipCode = zip;
+        this.homePrice = price;
         this.squareFeet = sqft;
         this.saleStatus = status;
     }
@@ -31,6 +33,7 @@ public class Home {
         System.out.println("Street Address: " + homeStreetAddress);
         System.out.println("City: " + homeCity);
         System.out.println("State: " + homeState);
+        System.out.println("Price: " + homePrice);
         System.out.println("Zip Code: " + homeZipCode);
         System.out.println("Square Feet: " + squareFeet);
         System.out.println("Sales Status: " + saleStatus);
@@ -60,6 +63,10 @@ public class Home {
         return homeZipCode;
     }
 
+    public double getHomePrice() {
+        return homePrice;
+    }
+
     public int getSquareFeet() {
         return squareFeet;
     }
@@ -86,6 +93,10 @@ public class Home {
     
     public void setZipCode(String zip) {
         this.homeZipCode = zip;
+    }
+
+    public void setHomePrice(double price) {
+        this.homePrice = price;
     }
     
     public void setSquareFeet(int sqft) {

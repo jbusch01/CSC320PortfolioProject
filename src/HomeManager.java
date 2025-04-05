@@ -29,6 +29,9 @@ public class HomeManager {
         System.out.println("\nEnter the zip code: ");
         String zip = scnr.nextLine();
 
+        System.out.println(("\nEnter the home's price: "));
+        double price = scnr.nextDouble();
+
         System.out.println("\nEnter the square footage: ");
         int sqft = 0;
         boolean validInput = false;
@@ -45,11 +48,12 @@ public class HomeManager {
         System.out.println("\nEnter the sale status: ");
         String status = scnr.nextLine();
         
-        Home newHome = new Home(model, address, city, state, zip, sqft, status);
+        Home newHome = new Home(model, address, city, state, zip, price, sqft, status);
 
         System.out.println("\nHere is the information you entered:");
         System.out.println("Model: " + model);
         System.out.println("Address: " + address + ", " + city + ", " + state + " " + zip);
+        System.out.println("Price: " + price);
         System.out.println("Square Footage: " + sqft);
         System.out.println("Sale Status: " + status);
 
@@ -125,16 +129,17 @@ public class HomeManager {
                     System.out.println("3. City");
                     System.out.println("4. State");
                     System.out.println("5. Zip Code");
-                    System.out.println("6. Square Footage");
-                    System.out.println("7. Sale Status");
-                    System.out.println("8. Done Updating");
+                    System.out.println("6. Price");
+                    System.out.println("7. Square Footage");
+                    System.out.println("8. Sale Status");
+                    System.out.println("9. Done Updating");
                     System.out.println("Enter the option number (choose only one): ");
 
                     int choice = 0;
                     try {
                         choice = Integer.parseInt(scnr.nextLine());
                     } catch (NumberFormatException e) {
-                        System.out.println("\nInvalid input. Please enter a number between 1 and 8 (numbers only).");
+                        System.out.println("\nInvalid input. Please enter a number between 1 and 9 (numbers only).");
                         continue;
                     }
                     
@@ -166,6 +171,16 @@ public class HomeManager {
                             updated = true;
                             break;
                         case 6:
+                            System.out.println("\nEnter new price: ");
+                            try {
+                                double newPrice = Double.parseDouble(scnr.nextLine());
+                                home.setHomePrice(newPrice);
+                                updated = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("\nInvalid input. Please enter a numeric value (numbers and decimals only).");
+                            }
+                            break;
+                        case 7:
                             System.out.println("\nEnter new square footage: ");
                             try {
                                 int newSqft = Integer.parseInt(scnr.nextLine());
@@ -175,12 +190,12 @@ public class HomeManager {
                                 System.out.println("\nInvalid input. Please enter a numeric value (numbers only).");
                             }                            
                             break;
-                        case 7:
+                        case 8:
                             System.out.println("\nEnter new sale status: ");
                             home.setSaleStatus(scnr.nextLine());
                             updated = true;
                             break;
-                        case 8:
+                        case 9:
                             if (updated) {
                                 System.out.println("\nUpdating complete. Home successfully updated.");
                             } else {
@@ -220,6 +235,7 @@ public class HomeManager {
                 writer.write("Home ID: " + home.getHomeID() + "\n");
                 writer.write("Model: " + home.getHomeModel() + "\n");
                 writer.write("Address: " + home.getHomeStreetAddress() + ", " + home.getHomeCity() + ", " + home.getHomeState() + " " + home.getHomeZipCode() + "\n");
+                writer.write("Price: " + home.getHomePrice() + "\n");
                 writer.write("Square Footage: " + home.getSquareFeet() + "\n");
                 writer.write("Sale Status: " + home.getSaleStatus() + "\n");
                 writer.write("----------------------\n"); // To visually separate objects for readability
